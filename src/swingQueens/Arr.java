@@ -1,6 +1,7 @@
 package swingQueens;
 
 import java.awt.Color;
+import java.util.Timer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 class Arr   {
 	int[][] arr = null;
 	int size ;
+	
 
 	public Arr(int[][] arr) {
 		this.arr = arr;
@@ -83,13 +85,19 @@ class Arr   {
 
 	public void setArr(int x, int y, int v) {
 		this.arr[x][y] = v;
-		/* try {
+		Boolean b = true;
+		if (v == 0 ) {b = false;}
+		Grid G = Grid.GetGrid();
+		G.MakeQueen(x, y, b);
+		
+		
+		 /* try {
 
-		 	//Thread.sleep(100);
+		 	  Thread.sleep(55);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} */
-	}
+		}  
+	*/}
 
 }	

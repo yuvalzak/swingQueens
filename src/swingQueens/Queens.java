@@ -3,9 +3,11 @@ package swingQueens;
 
 public class Queens {
 	static int ArrSize = 8;
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
+	
+	public Queens(int startAt){
 		Arr queenArr = new Arr(ArrSize);
-		queenArr =  FindQueenPositions(queenArr, 0 , 7);
+		queenArr =  FindQueenPositions(queenArr, 0 , startAt);
 		System.out.println(queenArr.toString());
 
 	}
@@ -15,7 +17,7 @@ public class Queens {
 			for (  j= startAt; j < ArrSize; j++){
 				if (itsAGoodPlace(QueenNum,j, queenArr)){ 
 					queenArr.setArr(QueenNum,j, 1); 
-				//	queenArr.print();
+				// 	queenArr.print();
 					return  FindQueenPositions(queenArr, QueenNum + 1, 0  );
 				}} if (j== ArrSize){  
 		// we have to go back, clean the array, and start one down

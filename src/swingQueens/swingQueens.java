@@ -24,12 +24,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class swingQueens extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtNumLabel;
 	private Grid G = null;
+	private JComboBox cmbPlace;
 
 	/**
 	 * Launch the application.
@@ -40,6 +41,8 @@ public class swingQueens extends JFrame {
 				try {
 					swingQueens frame = new swingQueens();
 					frame.setVisible(true);
+				//	Queens Q = new Queens(0);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,47 +62,26 @@ public class swingQueens extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		ImageIcon img = (new ImageIcon("/Users/yuvalzak/Documents/workspace/swingQueens/images/smallQueen.png"));
-		JLabel q1 = new JLabel("");
-		q1.setBackground(Color.ORANGE);
-		q1.setIcon(img);
-		q1.setBounds(699, 43, 55, 55);
-		contentPane.add(q1);
-		
-		JLabel q2 = new JLabel("");
-		q2.setBackground(Color.ORANGE);
-		q2.setBounds(699, 187, 55, 55);
-	//	q2.setIcon(img);
-		q2.setOpaque(true);
-		contentPane.add(q2);
-		
-		JLabel q3 = new JLabel("");
-		q3.setBounds(699, 110, 55, 55);
-		q3.setIcon(img);
-		contentPane.add(q3);
 		G  = Grid.MakeGrid(contentPane,8);
-		 
-		txtNumLabel = new JTextField();
-		txtNumLabel.setBounds(758, 3, 92, 28);
-		contentPane.add(txtNumLabel);
-		txtNumLabel.setColumns(10);
 		
-		JButton cmdChange = new JButton("New button");
+		JButton cmdChange = new JButton("First Queen At");
 		cmdChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				G.MakeQueen(Integer.parseInt(txtNumLabel.getText()), 3, true);
+				//G.deleteGrid();
+				
+				Queens Q = new Queens(Integer.parseInt(cmbPlace.getSelectedItem().toString()));
+			//	G.doGrid();
 		}});
 		
-		cmdChange.setBounds(747, 43, 117, 29);
+		cmdChange.setBounds(520, 49, 117, 29);
 		contentPane.add(cmdChange);
 		
-		JButton button = new JButton("New button");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				G.MakeQueen(Integer.parseInt(txtNumLabel.getText()), 3, false);
-			}
-		});
-		button.setBounds(757, 82, 117, 29);
-		contentPane.add(button);
+		cmbPlace = new JComboBox();
+		cmbPlace.setBounds(520, 20, 62, 27);
+		for(int ii=0; ii<8; ii++){
+			cmbPlace.addItem(ii);
+		}
+		contentPane.add(cmbPlace);
 		G.doGrid();
 		
 		final JFrame frame = new JFrame("Queens");

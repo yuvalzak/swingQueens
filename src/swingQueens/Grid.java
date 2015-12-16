@@ -1,14 +1,16 @@
 package swingQueens;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Grid {
+public class Grid  implements ActionListener{
 	private JPanel frame = null;
 	private int size;
 	private static Grid G = null;
@@ -17,6 +19,24 @@ public class Grid {
 	private Grid(JPanel contentPane, int size) {
 		this.frame = contentPane;
 		this.size = size;
+		
+		/*Timer timer;
+
+		  ActionListener updateProBar;
+
+		  public TimerBasedAnimation() {
+		    
+
+		    timer = new Timer(20 );
+		    timer.setInitialDelay(190);
+		    timer.start();
+		  }
+
+     }*/
+		
+		
+		
+		
 	}
 	// static for singlton 
 	//////////////////////
@@ -26,6 +46,11 @@ public class Grid {
 		}
 		return G;
 	}
+	
+	public static Grid GetGrid(){
+		return G;
+	}
+	
 	
 	public void MakeQueen (int x, int y, Boolean b){
 		int place = size * x + y;
@@ -37,9 +62,25 @@ public class Grid {
 		} else {
 		tmp.setIcon(null);	
 		}
-		
+		//frame.revalidate(); 
+		tmp.repaint();
+		 frame.repaint();
+	 
+
 	}
 
+	
+	public void deleteGrid(){
+		
+		for (int i = 0; i < size* size; i++) {
+			 
+		frame.remove(lstQueens.get(i));
+		}
+		frame.revalidate(); 
+		frame.repaint();
+			 
+	}
+	
 	public void doGrid() {
 		//List<JLabel> lstQueens = new ArrayList<>();
 		JLabel tmp = null;
@@ -47,7 +88,8 @@ public class Grid {
 		int k = 0;
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				lstQueens.add(new JLabel("[" + i + "][" + j + "]"+ k++));
+			//	lstQueens.add(new JLabel("[" + i + "][" + j + "]"+ k++));
+				lstQueens.add(new JLabel(""));
 				tmp = lstQueens.get(lstQueens.size() - 1);
 
 				tmp.setBounds(i * s, j * s, 55, 55);
