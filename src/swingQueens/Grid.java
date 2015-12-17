@@ -1,43 +1,32 @@
 package swingQueens;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-
+import javax.swing.Timer;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Grid  implements ActionListener{
+public class Grid   {
 	private JPanel frame = null;
 	private int size;
 	private static Grid G = null;
 	List<JLabel> lstQueens = new ArrayList<>();
+	Timer timer = null;
+	
 	
 	private Grid(JPanel contentPane, int size) {
 		this.frame = contentPane;
 		this.size = size;
-		
-		/*Timer timer;
-
-		  ActionListener updateProBar;
-
-		  public TimerBasedAnimation() {
-		    
-
-		    timer = new Timer(20 );
-		    timer.setInitialDelay(190);
-		    timer.start();
-		  }
-
-     }*/
-		
-		
-		
-		
-	}
+	}	
+	
+	 public void StartTimer(Boolean b){
+		 if(b){ timer.start();}
+		 else{ timer.stop();}
+	 }
 	// static for singlton 
 	//////////////////////
 	public static Grid MakeGrid(JPanel contentPane, int size){
@@ -51,22 +40,33 @@ public class Grid  implements ActionListener{
 		return G;
 	}
 	
+	public void MakeQueenWithTimer(int x, int y, Boolean b){
+		  timer = new Timer(1, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MakeQueen(x,y,b);
+				
+			}
+		});
+		  MakeQueen(x,y,b);
+		//timer.start();
+	}
 	
 	public void MakeQueen (int x, int y, Boolean b){
+		timer.start();
 		int place = size * x + y;
-		JLabel tmp = new JLabel();
+		JLabel   tmp = new JLabel();
 		tmp = lstQueens.get(place);
 		if (b) {
-		tmp.setIcon(new ImageIcon("/Users/yuvalzak/Documents/workspace/swingQueens/images/smallQueen.png"));
+		tmp.setIcon(new ImageIcon("img/smallQueen.png"));
 	
 		} else {
 		tmp.setIcon(null);	
 		}
-		//frame.revalidate(); 
+	// frame.revalidate(); 
 		tmp.repaint();
 		 frame.repaint();
-	 
-
+	//	 timer.stop();
 	}
 
 	
@@ -82,7 +82,6 @@ public class Grid  implements ActionListener{
 	}
 	
 	public void doGrid() {
-		//List<JLabel> lstQueens = new ArrayList<>();
 		JLabel tmp = null;
 		int s = 60;
 		int k = 0;
@@ -94,13 +93,13 @@ public class Grid  implements ActionListener{
 
 				tmp.setBounds(i * s, j * s, 55, 55);
 				tmp.setBackground(Color.ORANGE);
-				/*if (i == 5) {
-					tmp.setIcon(new ImageIcon("/Users/yuvalzak/Documents/workspace/swingQueens/images/smallQueen.png"));
-
-				}*/
 				tmp.setOpaque(true);
 				frame.add(tmp);
 			}
 		}
 	}
+
+
+
+
 }

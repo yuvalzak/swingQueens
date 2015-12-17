@@ -41,6 +41,7 @@ public class swingQueens extends JFrame {
 				try {
 					swingQueens frame = new swingQueens();
 					frame.setVisible(true);
+					frame.setTitle("Finding Queen Positions on Board");
 				//	Queens Q = new Queens(0);
 					
 				} catch (Exception e) {
@@ -61,16 +62,15 @@ public class swingQueens extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		ImageIcon img = (new ImageIcon("/Users/yuvalzak/Documents/workspace/swingQueens/images/smallQueen.png"));
 		G  = Grid.MakeGrid(contentPane,8);
 		
 		JButton cmdChange = new JButton("First Queen At");
 		cmdChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//G.deleteGrid();
-				
+				 
 				Queens Q = new Queens(Integer.parseInt(cmbPlace.getSelectedItem().toString()));
-			//	G.doGrid();
+			  //  G.StartTimer(false);
 		}});
 		
 		cmdChange.setBounds(520, 49, 117, 29);

@@ -88,16 +88,7 @@ class Arr   {
 		Boolean b = true;
 		if (v == 0 ) {b = false;}
 		Grid G = Grid.GetGrid();
-		G.MakeQueen(x, y, b);
+		G.MakeQueenWithTimer(x, y, b);
 		
-		
-		 /* try {
-
-		 	  Thread.sleep(55);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  
-	*/}
-
+	}
 }	
