@@ -30,22 +30,7 @@ class Arr   {
 	}
 
 	 
-	
-	public void ShowOnScreen(JPanel j){
-		JLabel [][]  lbls = new JLabel[size][size];
-		ImageIcon Qimg = (new ImageIcon("/Users/yuvalzak/Documents/workspace/swingQueens/images/smallQueen.png"));
-		Color clr = new Color(22,44,66);
-		for ( int i = 0; i< size; i++) {
-			 
-			for (int jj =0; jj< size; jj++){
-				if(arr[jj][i]==1) {lbls[jj][i].setIcon(Qimg); }
-				// it print not intiutivly, so i changed the x , y
-				else{
-					{lbls[jj][i].setBackground(clr); } 
-				}
-			}
-		}
-	}
+	 
 	
 	@Override
 	public String toString() {

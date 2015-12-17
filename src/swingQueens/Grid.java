@@ -13,6 +13,13 @@ import javax.swing.JPanel;
 public class Grid   {
 	private JPanel frame = null;
 	private int size;
+	
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+
+
 	private static Grid G = null;
 	List<JLabel> lstQueens = new ArrayList<>();
 	Timer timer = null;
@@ -21,12 +28,13 @@ public class Grid   {
 	private Grid(JPanel contentPane, int size) {
 		this.frame = contentPane;
 		this.size = size;
+		
 	}	
 	
-	 public void StartTimer(Boolean b){
+	  public void StartTimer(Boolean b){
 		 if(b){ timer.start();}
 		 else{ timer.stop();}
-	 }
+	 } 
 	// static for singlton 
 	//////////////////////
 	public static Grid MakeGrid(JPanel contentPane, int size){
@@ -41,19 +49,18 @@ public class Grid   {
 	}
 	
 	public void MakeQueenWithTimer(int x, int y, Boolean b){
-		  timer = new Timer(1, new ActionListener() {
+		   timer = new Timer(1, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MakeQueen(x,y,b);
 				
 			}
-		});
-		  MakeQueen(x,y,b);
-		//timer.start();
+		}); 
+		   MakeQueen(x,y,b);
+		// timer.start();
 	}
 	
 	public void MakeQueen (int x, int y, Boolean b){
-		timer.start();
 		int place = size * x + y;
 		JLabel   tmp = new JLabel();
 		tmp = lstQueens.get(place);
@@ -81,6 +88,8 @@ public class Grid   {
 			 
 	}
 	
+
+	
 	public void doGrid() {
 		JLabel tmp = null;
 		int s = 60;
@@ -97,6 +106,8 @@ public class Grid   {
 				frame.add(tmp);
 			}
 		}
+		frame.revalidate(); 
+		frame.repaint();
 	}
 
 
