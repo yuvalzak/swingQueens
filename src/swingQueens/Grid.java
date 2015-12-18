@@ -35,7 +35,7 @@ public class Grid   {
 		 if(b){ timer.start();}
 		 else{ timer.stop();}
 	 } 
-	// static for singlton 
+	// static for singelton 
 	//////////////////////
 	public static Grid MakeGrid(JPanel contentPane, int size){
 		if (G == null) {
@@ -94,13 +94,14 @@ public class Grid   {
 		JLabel tmp = null;
 		int s = 60;
 		int k = 0;
+		lstQueens.clear();
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 			//	lstQueens.add(new JLabel("[" + i + "][" + j + "]"+ k++));
 				lstQueens.add(new JLabel(""));
 				tmp = lstQueens.get(lstQueens.size() - 1);
 
-				tmp.setBounds(i * s, j * s, 55, 55);
+				tmp.setBounds(5 + i * s, j * s, 55, 55);
 				tmp.setBackground(Color.ORANGE);
 				tmp.setOpaque(true);
 				frame.add(tmp);

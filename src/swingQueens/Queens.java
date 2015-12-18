@@ -1,17 +1,16 @@
 package swingQueens;
 
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Queens {
 	private static int numTimes ;
 	 static int ArrSize ;  //= 8;
 	 private static JTextField txt = null;
-	//public static void main(String[] args) {
 	
 	public Queens(int startAt, int ArrSize, JTextField txt){
 		this.txt = txt;
 		this.ArrSize = ArrSize;
+		numTimes = 0;
 		Arr queenArr = new Arr(ArrSize);
 		queenArr =  FindQueenPositions(queenArr, 0 , startAt);
 		System.out.println(queenArr.toString());
