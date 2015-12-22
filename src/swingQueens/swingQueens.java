@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Component;
+import java.awt.Cursor;
+
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
 
@@ -32,6 +34,9 @@ public class swingQueens extends JFrame {
 	private JComboBox cmbPlace = null;
 	private JPanel pnlCmds;
 	private JComboBox cmbGrid;
+	private Cursor waitCursor = new Cursor(Cursor.WAIT_CURSOR);
+    private Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+	 
 	
 
 	public static void main(String[] args) {
@@ -141,9 +146,11 @@ public class swingQueens extends JFrame {
 					 
 				cmdFindQueens.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						 frame.setCursor(waitCursor);
 						G.deleteGrid();
 						G.doGrid();
 						Queens Q = new Queens(Integer.parseInt(cmbPlace.getSelectedItem().toString()), arrSize, txtNumOfMoves);
+						 frame.setCursor(defaultCursor);
 					}
 				});
 		G.doGrid();
