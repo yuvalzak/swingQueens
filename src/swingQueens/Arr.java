@@ -1,11 +1,5 @@
 package swingQueens;
 
-import java.awt.Color;
-import java.util.Timer;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 class Arr   {
 	int[][] arr = null;
@@ -72,8 +66,9 @@ class Arr   {
 		this.arr[x][y] = v;
 		Boolean b = true;
 		if (v == 0 ) {b = false;}
-		Grid G = Grid.GetGrid();
-		G.MakeQueenWithTimer(x, y, b);
+	//	Grid G = Grid.GetGrid();
+	//	G.MakeQueenWithTimer(x, y, b);
+		eGrid.INSTANCE.MakeQueen(x, y, b);
 		
 	}
 }	

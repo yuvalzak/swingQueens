@@ -1,6 +1,7 @@
 package swingQueens;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -9,6 +10,12 @@ import javax.swing.Timer;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+// used to do this like this,  but changed the class Grid that was 
+// a singleton,  to an eGrid  enum !!!
+// this makes a real singleton, even with threads, and serialization.
+//  bloch at effective java says that it is better.
+///////////////////////////////////////////////////
 
 public class Grid   {
 	private JPanel frame = null;

@@ -1,15 +1,11 @@
 package swingQueens;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.Color;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -24,8 +20,12 @@ import java.awt.Dimension;
 
 public class swingQueens extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private Grid G = null;
+//	private Grid G = null;
 	private JTextField txtNumOfMoves;
 	private int arrSize = 8;
 	private int sizeQueenImage = 60;
@@ -67,8 +67,8 @@ public class swingQueens extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		G = Grid.MakeGrid(contentPane, arrSize);
-		
+		//G = Grid.MakeGrid(contentPane, arrSize);
+		  eGrid.INSTANCE.SetGrid(contentPane, arrSize); 
 		pnlCmds = new JPanel();
 		pnlCmds.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		pnlCmds.setBackground(new Color(143, 188, 143));
@@ -133,10 +133,10 @@ public class swingQueens extends JFrame {
 								});
 						cmdSizeGrid.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
-								G.deleteGrid();
+								eGrid.INSTANCE.deleteGrid();
 								arrSize = Integer.parseInt(cmbGrid.getSelectedItem().toString());
-								G.setSize(arrSize);
-								G.doGrid();
+								eGrid.INSTANCE.setSize(arrSize);
+								eGrid.INSTANCE.doGrid();
 								//cmbPlace.setSelectedIndex(0);
 								frame.setTitle("Finding Queen Positions on Board " + arrSize + " X " + arrSize);
 								pnlCmds.setLocation(11+ sizeQueenImage * arrSize, 0);
@@ -147,13 +147,13 @@ public class swingQueens extends JFrame {
 				cmdFindQueens.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						 frame.setCursor(waitCursor);
-						G.deleteGrid();
-						G.doGrid();
+						eGrid.INSTANCE.deleteGrid();
+						eGrid.INSTANCE.doGrid();
 						Queens Q = new Queens(Integer.parseInt(cmbPlace.getSelectedItem().toString()), arrSize, txtNumOfMoves);
 						 frame.setCursor(defaultCursor);
 					}
 				});
-		G.doGrid();
+		eGrid.INSTANCE.doGrid();
 
 		final JFrame frame = new JFrame("Queens");
 		frame.getContentPane().setBackground(Color.WHITE);
